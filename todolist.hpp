@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 using namespace std;
 
 
@@ -10,7 +11,6 @@ struct Task
     // attributes
     string name = ""; // name of task
     string description = ""; // short description for the task
-    const unsigned int MAX_CHAR = 64; // max chars for description
     unsigned int priority = 0;
     bool is_done = false;
 
@@ -28,8 +28,6 @@ struct Task
         name = taskName;
         priority = taskPriority;
     }
-
-    
 
     // copy constructor
     Task(const Task &t)
@@ -62,8 +60,11 @@ class ToDoList
     // view To Do List
     void viewList() const
     {
+        // print list name
         cout << list_name << endl;
         cout << "--------------------" << endl;
+
+        // for each task, print it's name, and its completion
         for(int i = 0; i < size; i++)
         {
             cout << (i + 1) << ") " << task_list[i].name << ": ";
@@ -96,16 +97,28 @@ class ToDoList
     // remove task
     void removeTask(unsigned int id)
     {
+        // check if id is valid index
+        if (id > size-1) throw invalid_argument("Invalid index number.");
+
         task_list.erase(task_list.begin() + id);
         size--;
     }
 
     // mark task as completed
-    void markComplete(unsigned int id) { task_list[id].is_done = true; }
+    void markComplete(unsigned int id) 
+    {
+        // if id is valid, change is_done to true
+        if (id > size-1) throw invalid_argument("Invalid index number.");
+        task_list[id].is_done = true; 
+    }
 
     // view task detail
     void viewTask(unsigned int id)
     {
+        // check if id is valid
+        if (id > size-1) throw invalid_argument("Invalid index number.");
+
+        // get task and print it's details
         Task t = task_list[id];
 
         cout << t.name << endl << "Description: ";
@@ -116,7 +129,6 @@ class ToDoList
         if (t.is_done) cout << "Completed" << endl;
         else cout << "To do" << endl;
         cout << endl;
-
     }
     
     private:
@@ -125,7 +137,6 @@ class ToDoList
     vector<Task> task_list; // for the sake of understanding, we are using a (max)heapmap with priority
     string list_name;
 
-    
     // helper methods
     void swap(Task &A, Task &B)
     {
