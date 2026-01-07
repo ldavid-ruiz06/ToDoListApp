@@ -131,11 +131,6 @@ class ToDoList
         cout << endl;
     }
     
-    // get name of list
-    string getName()
-    {
-        return list_name;
-    }
     private:
     // attributes
     unsigned int size = 0;
