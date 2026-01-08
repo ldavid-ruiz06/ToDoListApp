@@ -1,4 +1,10 @@
-// Reference with the struct and all the main functions
+// To-Do List Software
+// Created by: Luis David Ruiz Velázquez
+// Started: Jan-4-2026
+// Last update: Jan-5-2026
+
+
+// Reference with the class and all the main functions
 #include <iostream>
 #include <string>
 #include <vector>
@@ -10,7 +16,7 @@ struct Task
 {
     // attributes
     string name = ""; // name of task
-    string description = ""; // short description for the task
+    string description = ""; // short description for the task (if applied)
     unsigned int priority = 0;
     bool is_done = false;
 
@@ -131,6 +137,8 @@ class ToDoList
         cout << endl;
     }
     
+    string getName() { return list_name; }
+
     private:
     // attributes
     unsigned int size = 0;
