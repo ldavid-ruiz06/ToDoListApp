@@ -24,6 +24,7 @@ void deleteList(vector<ToDoList> &list);
 void viewList(vector<ToDoList> &list);
 void createTask(ToDoList &list);
 void deleteTask(ToDoList &list);
+void completeTask(ToDoList &list);
 
 // helper prototypes
 char getInput(unordered_set<char> valid_inputs);
@@ -41,6 +42,7 @@ int main()
     // while program is running
     while (run)
     {
+        cout << "---------------" << endl;
         // check screen current value to display correct screen
         switch (screen)
         {
@@ -61,6 +63,7 @@ int main()
                 //screen = taskView();
                 break;
         }
+        cout << "---------------" << endl;
         cout << endl;
     }
 
@@ -208,13 +211,12 @@ int listScreen(vector<ToDoList> &list, int &view_id)
         }
         case 'x': // mark task a complete
         {
-            cout << "Mark task as complete" << endl;
+            completeTask(list[view_id]);
             return 2;
             break;
         }
-        case 'b':
+        case 'b': // go back
         {
-            cout << "Go back" << endl;
             return 1;
             break;
         }
@@ -263,7 +265,7 @@ void createTask(ToDoList &list)
 
 void deleteTask(ToDoList &list)
 {
-    cout << "Id of list to delete: ";
+    cout << "Id of task to delete: ";
     // choose a valid id
     int id = getIndex(list.numberTasks());
 
@@ -273,6 +275,20 @@ void deleteTask(ToDoList &list)
 
     // delete list
     list.removeTask(id);
+}
+
+void completeTask(ToDoList &list)
+{
+    cout << "Id of task to complete: ";
+    // choose a valid id
+    int id = getIndex(list.numberTasks());
+
+    // if id is -1, cancel process
+    cout << endl;
+    if (id == -1) return;
+
+    // delete list
+    list.markComplete(id);
 }
 
 // helper functions
