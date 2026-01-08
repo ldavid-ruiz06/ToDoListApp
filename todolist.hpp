@@ -137,7 +137,11 @@ class ToDoList
         cout << endl;
     }
     
+    // get list name
     string getName() { return list_name; }
+
+    // get number of tasks
+    int numberTasks() { return size; }
 
     private:
     // attributes
