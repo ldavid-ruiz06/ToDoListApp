@@ -65,6 +65,7 @@ int main()
         }
         cout << "---------------" << endl;
         cout << endl;
+        cout << "\x1B[2J" << endl;
     }
 
 
