@@ -1,7 +1,7 @@
-// To-Do List Software
-// Created by: Luis David Ruiz Velázquez
-// Started: Jan-4-2026
-// Last update: Jan-5-2026
+// # To-Do List Software
+// # Created by: Luis David Ruiz Velázquez
+// # Started: Jan-4-2026
+// # Last update: Jan-5-2026
 
 
 // Reference with the class and all the main functions
@@ -146,8 +146,10 @@ class ToDoList
     private:
     // attributes
     unsigned int size = 0;
-    vector<Task> task_list; // for the sake of understanding, we are using a (max)heapmap with priority
-    string list_name;
+    vector<Task> task_list; // ? for the sake of understanding, we are using a (max)heapmap with priority
+    string list_name;       // no we are not???
+
+    
 
     // helper methods
     void swap(Task &A, Task &B)
