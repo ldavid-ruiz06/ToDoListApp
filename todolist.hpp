@@ -89,13 +89,15 @@ class ToDoList
         task_list.push_back(new_task);
         size++;
         
-    // find its place in the heap
+        cout << "Moving swap" << endl;
+        // find its place in the heap
         // get id of added task
         int current = size - 1;
         // compare priority with the previous one
         // if cur > prev, swap positions
         while(current > 0 && task_list[current].priority > task_list[current - 1].priority)
         {
+            cout << "Comparing" << endl;
             swap(task_list[current], task_list[current - 1]);
         }
     }
@@ -159,5 +161,9 @@ class ToDoList
         B = temp;
     }
     
-    
+    void save_list()
+    {
+        
+    }
 };
+

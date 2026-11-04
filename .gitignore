@@ -5,7 +5,8 @@
 
 # Executables
 *.exe
-
+builds/
+*.o
 
 # User-specific files
 *.rsuser
